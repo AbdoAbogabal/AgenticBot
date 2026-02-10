@@ -1,0 +1,222 @@
+:root {
+    --primary: #6366f1;
+    --primary-hover: #4f46e5;
+    --bg-widget: #0f172a;
+    --bg-input: #1e293b;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+/* Floating Button with Pulse Effect */
+.chat-fab {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, var(--primary), #a855f7);
+    border-radius: 22px;
+    /* Squircle shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+    border: none;
+    color: white;
+}
+
+.chat-fab:hover {
+    transform: translateY(-5px) rotate(5deg);
+}
+
+/* The Popup Window */
+.chat-popup {
+    position: fixed;
+    bottom: 105px;
+    right: 25px;
+    width: 400px;
+    max-width: calc(100vw - 50px);
+    height: 600px;
+    max-height: calc(100vh - 150px);
+    background: var(--bg-widget);
+    border-radius: 28px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    z-index: 999;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.chat-popup.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: all;
+}
+
+/* Premium Header */
+.chat-header {
+    padding: 24px;
+    background: linear-gradient(to right, rgba(99, 102, 241, 0.15), transparent);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    background: var(--primary);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.header-info h3 {
+    margin: 0;
+    font-size: 16px;
+    color: white;
+}
+
+.status {
+    font-size: 12px;
+    color: #22c55e;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Message List */
+.message-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background-image: radial-gradient(circle at 2px 2px, var(--glass) 1px, transparent 0);
+    background-size: 24px 24px;
+}
+
+.bubble {
+    padding: 14px 18px;
+    border-radius: 20px;
+    font-size: 14.5px;
+    line-height: 1.5;
+    max-width: 80%;
+    position: relative;
+}
+
+.user {
+    align-self: flex-end;
+    background: var(--primary);
+    color: white;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+}
+
+.model {
+    align-self: flex-start;
+    background: var(--bg-input);
+    color: #e2e8f0;
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+}
+
+/* Input Section */
+.input-area {
+    padding: 20px;
+    background: var(--bg-widget);
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+}
+
+.input-area input {
+    flex: 1;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px 18px;
+    color: white;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.input-area input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: rgba(30, 41, 59, 0.9);
+}
+
+.send-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 14px;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.send-btn:hover {
+    background: var(--primary-hover);
+    transform: scale(1.05);
+}
+
+.model-dropdown {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #94a3b8;
+    font-size: 11px;
+    border-radius: 6px;
+    padding: 2px 6px;
+    margin-top: 4px;
+    cursor: pointer;
+    outline: none;
+    width: fit-content;
+    transition: all 0.2s ease;
+}
+
+.model-dropdown:hover {
+    border-color: #3b82f6;
+    color: white;
+}
+
+.model-dropdown option {
+    background: #1e293b;
+    color: white;
+}
+
+/* Ensure header info stacks vertically */
+.header-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.welcome-msg {
+    text-align: center;
+    padding: 40px 20px;
+    color: #64748b;
+}
+
+.welcome-emoji {
+    font-size: 24px;
+    margin-bottom: 10px;
+}

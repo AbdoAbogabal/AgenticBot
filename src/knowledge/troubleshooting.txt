@@ -1,0 +1,4 @@
+TechFlow Troubleshooting Guide
+- Password Reset: Users must go to /settings/security and click "Reset via Biometrics".
+- API Error 401: This usually means the API key is expired. Rotate it in the Developer Portal.
+- Downtime Policy: We guarantee 99.99% uptime. Credits are issued if downtime exceeds 5 minutes.

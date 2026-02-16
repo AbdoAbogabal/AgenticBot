@@ -7,5 +7,8 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: '/AgenticBot/',
+  base: '/AgenticBot/',   // <-- important for GitHub Pages
+  build: {
+    outDir: 'dist',
+  },
 })

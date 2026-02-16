@@ -41,4 +41,4 @@ jobs:
         run: |
           git config --global user.name "AbdoAbogabal"
           git config --global user.email "abdoabogabal123@gmail.com"
-          npm run deploy
+          npx gh-pages -d dist -r https://x-access-token:${GITHUB_TOKEN}@github.com/AbdoAbogabal/AgenticBot.git

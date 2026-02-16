@@ -241,10 +241,8 @@ export default function App() {
   const [input, setInput] = useState('');
   const [messages, setMessages] = useState<{ role: string, text: string, type?: 'status' }[]>([]);
   const [loading, setLoading] = useState(false);
-  const [selectedModel, setSelectedModel] = useState(MODELS[0].id);
   const [chat, setChat] = useState<any>(null);
   const [currentToolkit, setCurrentToolkit] = useState<string | null>(null);
-  const [isOpen, setIsOpen] = useState(false);
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -275,7 +273,7 @@ export default function App() {
   const startSession = async (tools: any[] = [], history: any[] = []) => {
     const genAI = new GoogleGenerativeAI(API_KEY);
     const model = genAI.getGenerativeModel({
-      model: selectedModel,
+      model: MODELS[0].id,
       systemInstruction: SYSTEM_INSTRUCTIONS,
       tools: tools.length > 0 ? [{ functionDeclarations: tools }] : undefined,
     });
@@ -288,7 +286,7 @@ export default function App() {
       setChat(initialChat);
       setMessages([{ role: 'model', text: "Ready. Tools will load contextually.", type: 'status' }]);
     })();
-  }, [selectedModel]);
+  }, []);
 
   useEffect(() => {
     scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -390,7 +388,7 @@ export default function App() {
           return;
         }
 
-        functionCalls = candidate.content.parts.filter((p) => p.functionCall);
+        functionCalls = candidate.content.parts.filter((p: any) => p.functionCall);
 
         // response = result.response;
         // functionCalls = response.candidates[0].content.parts.filter((p: any) => p.functionCall);
